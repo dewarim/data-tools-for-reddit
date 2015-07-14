@@ -1,6 +1,7 @@
 package com.dewarim.reddit;
 
 /**
+ * A Reddit comment.
  */
 public class Comment {
 

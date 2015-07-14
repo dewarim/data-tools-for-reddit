@@ -4,10 +4,9 @@ package com.dewarim.reddit;
 import com.google.gson.Gson;
 
 import java.io.*;
-import java.util.function.Consumer;
 
 /**
- * Read the data from a given json file and give them to a CommentConsumer.
+ * Read the comment objects from a given json file and hand them over to a CommentConsumer.
  */
 public class DataReader {
 
@@ -24,12 +23,9 @@ public class DataReader {
             BufferedReader buffy = new BufferedReader(new FileReader(file));
             Gson gson = new Gson();
 
-            buffy.lines().forEach(new Consumer<String>() {
-                @Override
-                public void accept(String s) {
-                    Comment comment = gson.fromJson(s, Comment.class);
-                    consumer.consume(comment);
-                }
+            buffy.lines().forEach(line -> {
+                Comment comment = gson.fromJson(line, Comment.class);
+                consumer.consume(comment);
             });
 
 
