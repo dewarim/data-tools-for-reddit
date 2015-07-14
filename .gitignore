@@ -14,4 +14,4 @@
 hs_err_pid*
 
 .idea/
-.data/
+data/
