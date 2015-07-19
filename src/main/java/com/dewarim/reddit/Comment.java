@@ -12,18 +12,18 @@ public class Comment {
     public Integer gilded;
     public Boolean scoreHidden;
     public Integer score;
-    public String  linkId;
-    public Long    retrievedOn;
+    public String  link_id;
+    public Long    retrieved_on;
     public String  authorFlairCssClass;
     public String  subreddit;
     public String  edited;
     public Integer ups;
     public Integer downs;
     public Integer controversiality;
-    public Long    createdUtc;
-    public String  parentId;
+    public Long    created_utc;
+    public String  parent_id;
     public Boolean archived;
-    public String  subredditId;
+    public String  subreddit_id;
     public String  id;
     public String  distinguished;
 
@@ -37,20 +37,27 @@ public class Comment {
                 ", gilded=" + gilded +
                 ", scoreHidden=" + scoreHidden +
                 ", score=" + score +
-                ", linkId='" + linkId + '\'' +
-                ", retrievedOn=" + retrievedOn +
+                ", link_id='" + link_id + '\'' +
+                ", retrieved_on=" + retrieved_on +
                 ", authorFlairCssClass='" + authorFlairCssClass + '\'' +
                 ", subreddit='" + subreddit + '\'' +
                 ", edited=" + edited +
                 ", ups=" + ups +
                 ", downs=" + downs +
                 ", controversiality=" + controversiality +
-                ", createdUtc=" + createdUtc +
-                ", parentId='" + parentId + '\'' +
+                ", created_utc=" + created_utc +
+                ", parent_id='" + parent_id + '\'' +
                 ", archived=" + archived +
-                ", subredditId='" + subredditId + '\'' +
+                ", subreddit_id='" + subreddit_id + '\'' +
                 ", id='" + id + '\'' +
                 ", distinguished='" + distinguished + '\'' +
                 '}';
+    }
+
+    public static String createLink(String subreddit, String linkId, String commentId) {
+        if(subreddit == null || linkId == null || commentId == null){
+            return "[error]: can only create link from non-null fields.";
+        }
+        return String.format("http://www.reddit.com/r/%s/comments/%s/%s", subreddit, linkId.replace("t3_", ""), commentId);
     }
 }
