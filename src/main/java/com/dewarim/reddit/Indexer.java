@@ -36,7 +36,7 @@ public class Indexer {
         config.setCommitOnClose(true);
         indexWriter = new IndexWriter(dir, config);
         for(File inputFile : inputFiles) {
-            System.out.println("Indexing: "+inputFile);
+            System.out.println("\nIndexing: " + inputFile);
             indexAllTheThings(indexWriter, inputFile);
         }
         indexWriter.close();

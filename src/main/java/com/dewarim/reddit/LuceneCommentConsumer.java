@@ -10,6 +10,8 @@ import java.io.IOException;
 public class LuceneCommentConsumer implements CommentConsumer{
 
     IndexWriter indexWriter;
+    Long counter = 0L;
+    Long deleted = 0L;
 
     public LuceneCommentConsumer(IndexWriter indexWriter) {
         this.indexWriter = indexWriter;
@@ -19,6 +21,7 @@ public class LuceneCommentConsumer implements CommentConsumer{
     public void consume(Comment comment) {
         if(comment.body.equals("[deleted]")){
             // do not index deleted comments: they contain little of value.
+            deleted++;
             return;
         }
         Document doc = new Document();
@@ -45,6 +48,10 @@ public class LuceneCommentConsumer implements CommentConsumer{
         }
         catch (IOException e){
             throw new RuntimeException(e);
+        }
+        counter++;
+        if(counter % 1_000_000 == 0){
+            System.out.print(".");
         }
     }
 }
