@@ -7,15 +7,11 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 /**
  */
@@ -38,17 +34,51 @@ public class Searcher {
 
     public void search(String queryValue) {
         try {
-            System.out.println("Searching in " + reader.getDocCount(defaultField) + " documents for '" + queryValue + "'");
             Query query = queryParser.parse(queryValue);
+            countMatches(query);
             TopDocs topDocs = searcher.search(query, 10);
             ScoreDoc[] hits = topDocs.scoreDocs;
             for (ScoreDoc scoreDoc : hits) {
                 Document doc = searcher.doc(scoreDoc.doc);
-                say("Score: " + scoreDoc.score + " url: " + doc.get("url")+"\n"+doc.get("body"));
+                say("Score: " + scoreDoc.score + " author: " + doc.get("author") + ", url: " + doc.get("url") + "\n" + doc.get("body"));
             }
         } catch (ParseException | IOException p) {
             throw new RuntimeException(p);
         }
+    }
+    public void search(Query query) {
+        try {
+            countMatches(query);
+            TopDocs topDocs = searcher.search(query, 10);
+            ScoreDoc[] hits = topDocs.scoreDocs;
+            for (ScoreDoc scoreDoc : hits) {
+                Document doc = searcher.doc(scoreDoc.doc);
+                say("DocScore: " + scoreDoc.score + " author: " + doc.get("author") +
+                        ", ups:"+doc.get("ups")+", url: " + doc.get("url") + "\n" + doc.get("body"));
+            }
+        } catch (IOException p) {
+            throw new RuntimeException(p);
+        }
+    }
+
+    public long countDocuments() throws IOException {
+        return reader.getDocCount(defaultField);
+    }
+
+    private long countMatches(Query query) throws IOException{
+        TotalHitCountCollector collector = new TotalHitCountCollector();
+        searcher.search(query, collector);
+        long totalHits = collector.getTotalHits();
+        System.out.println("Found: " + totalHits + " matching documents.");
+
+        if (collector.getTotalHits() > 10) {
+            say("Going to display top 10:");
+        } else if ( totalHits == 0) {
+            say("Found nothing.");
+        } else {
+            say("Here are the results:");
+        }
+        return totalHits;
     }
 
     private void say(String s) {
