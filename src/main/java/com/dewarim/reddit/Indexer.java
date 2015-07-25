@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class Indexer {
 
-    File indexDir;
-    List<File> inputFiles;
-    boolean appendToIndex;
+    File        indexDir;
+    List<File>  inputFiles;
+    boolean     appendToIndex;
     IndexWriter indexWriter;
 
     public Indexer(File indexDir, List<File> inputFiles, boolean appendToIndex) {
@@ -26,24 +26,24 @@ public class Indexer {
         this.appendToIndex = appendToIndex;
     }
 
-    public void startIndexing() throws IOException{
+    public void startIndexing() throws IOException {
         Directory dir = FSDirectory.open(indexDir.toPath());
         Analyzer analyzer = new StandardAnalyzer();
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
-        if(appendToIndex){
+        if (appendToIndex) {
             config.setOpenMode(IndexWriterConfig.OpenMode.APPEND);
         }
         config.setCommitOnClose(true);
         indexWriter = new IndexWriter(dir, config);
-        for(File inputFile : inputFiles) {
+        for (File inputFile : inputFiles) {
             System.out.println("\nIndexing: " + inputFile);
             indexAllTheThings(indexWriter, inputFile);
         }
         indexWriter.close();
     }
 
-    private void indexAllTheThings(IndexWriter writer, File data){
-        DataReader dataReader = new DataReader(data, new LuceneCommentConsumer(indexWriter) );
+    private void indexAllTheThings(IndexWriter indexWriter, File data) {
+        DataReader dataReader = new DataReader(data, new LuceneCommentConsumer(indexWriter));
         dataReader.parseFile();
     }
 
