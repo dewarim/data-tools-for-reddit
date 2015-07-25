@@ -1,8 +1,13 @@
 package com.dewarim.reddit;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 /**
  * A Reddit comment.
  */
+@JsonPropertyOrder(value = {"author", "name", "body", "author_flair_text", "gilded", "score_hidden", "score", "link_id",
+        "retrieved_on", "author_flair_css_class", "subreddit", "edited", "ups", "downs", "controversiality",
+        "created_utc", "parent_id", "archived", "subreddit_id", "id", "distinguished"})
 public class Comment {
 
     public String  author;

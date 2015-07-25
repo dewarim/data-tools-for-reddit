@@ -12,6 +12,7 @@ public class CountingCommentConsumer implements CommentConsumer {
         counter++;
         if(counter % 10000 == 0){
             System.out.print(".");
+            System.out.println(Comment.createLink(comment.subreddit, comment.link_id, comment.id));
         }
     }
 

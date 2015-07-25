@@ -1,7 +1,6 @@
 package com.dewarim.reddit;
 
 import java.io.File;
-import java.io.IOError;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,20 +42,25 @@ public class Main {
         searcher.search("reddit gold");
     }
 
-    public static void indexEverything() throws IOException {
+    public static List<File> gatherInputFiles(String baseDir) {
         List<File> inputFiles = new ArrayList<>();
-        String baseDir = "F:/reddit_data/";
         for (int year = 2007; year < 2016; year++) {
-            File singleYearDir = new File(baseDir+year);
+            File singleYearDir = new File(baseDir + File.separator + year);
             File[] files = singleYearDir.listFiles();
-            if(files != null) {
-                for(File file : files) {
-                    if(file.getName().startsWith("RC_")) {
+            if (files != null) {
+                for (File file : files) {
+                    if (file.getName().startsWith("RC_")) {
                         inputFiles.add(file);
                     }
                 }
             }
         }
+        return inputFiles;
+    }
+
+    public static void indexEverything() throws IOException {
+        String baseDir = "F:/reddit_data";
+        List<File> inputFiles = gatherInputFiles(baseDir);
         File indexDir = new File("data", "index-all");
         if (indexDir.exists()) {
             File[] oldIndexFiles = indexDir.listFiles();
