@@ -8,13 +8,13 @@ public class Comment {
     public String  author;
     public String  name;
     public String  body;
-    public String  authorFlairText;
+    public String  author_flair_text;
     public Integer gilded;
-    public Boolean scoreHidden;
+    public Boolean score_hidden;
     public Integer score;
     public String  link_id;
     public Long    retrieved_on;
-    public String  authorFlairCssClass;
+    public String  author_flair_css_class;
     public String  subreddit;
     public String  edited;
     public Integer ups;
@@ -33,13 +33,13 @@ public class Comment {
                 "author='" + author + '\'' +
                 ", name='" + name + '\'' +
                 ", body='" + body + '\'' +
-                ", authorFlairText='" + authorFlairText + '\'' +
+                ", author_flair_text='" + author_flair_text + '\'' +
                 ", gilded=" + gilded +
-                ", scoreHidden=" + scoreHidden +
+                ", score_hidden=" + score_hidden +
                 ", score=" + score +
                 ", link_id='" + link_id + '\'' +
                 ", retrieved_on=" + retrieved_on +
-                ", authorFlairCssClass='" + authorFlairCssClass + '\'' +
+                ", author_flair_css_class='" + author_flair_css_class + '\'' +
                 ", subreddit='" + subreddit + '\'' +
                 ", edited=" + edited +
                 ", ups=" + ups +
@@ -55,7 +55,7 @@ public class Comment {
     }
 
     public static String createLink(String subreddit, String linkId, String commentId) {
-        if(subreddit == null || linkId == null || commentId == null){
+        if (subreddit == null || linkId == null || commentId == null) {
             return "[error]: can only create link from non-null fields.";
         }
         return String.format("http://www.reddit.com/r/%s/comments/%s/%s", subreddit, linkId.replace("t3_", ""), commentId);
