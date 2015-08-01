@@ -55,14 +55,18 @@ public class CsvConverter {
 
     public static void main(String[] args) throws IOException {
 //        File csvDir = new File("data", "csv");
-        File csvDir = new File("F:/reddit_data", "csv");
+        String path = "F:/reddit_data";
+        if(args.length > 0){
+            path = args[0];
+        }
+        File csvDir = new File(path, "csv");
         if (!csvDir.exists()) {
             boolean mkResult = csvDir.mkdirs();
             if (!mkResult) {
                 throw new RuntimeException("Could not create " + csvDir + " directory for output.");
             }
         }
-        List<File> inputFiles = Main.gatherInputFiles("F:/reddit_data");
+        List<File> inputFiles = Main.gatherInputFiles(path);
 //        inputFiles.add(new File("data", "firstHundred.json"));
         CsvConverter csvConverter = new CsvConverter(csvDir, inputFiles);
         csvConverter.startConversion();
