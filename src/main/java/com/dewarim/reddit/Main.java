@@ -44,7 +44,7 @@ public class Main {
 
     public static List<File> gatherInputFiles(String baseDir) {
         List<File> inputFiles = new ArrayList<>();
-        for (int year = 2007; year < 2016; year++) {
+        for (int year = 2007; year < 2017; year++) {
             File singleYearDir = new File(baseDir + File.separator + year);
             File[] files = singleYearDir.listFiles();
             if (files != null) {
