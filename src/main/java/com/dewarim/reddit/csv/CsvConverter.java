@@ -10,6 +10,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 import java.io.*;
 import java.util.List;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * Convert the Reddit JSON files into tab separated CSV files.
@@ -41,9 +42,9 @@ public class CsvConverter {
 
     private void totalConversion(File data) throws IOException {
         ObjectWriter objectWriter = csvMapper.writer(schema);
-        File csvOutput = new File(csvDir, data.getName() + ".csv");
+        File csvOutput = new File(csvDir, data.getName() + ".csv.gz");
         FileOutputStream tempFileOutputStream = new FileOutputStream(csvOutput);
-        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(tempFileOutputStream, 1024 * 1024);
+        GZIPOutputStream bufferedOutputStream = new GZIPOutputStream(tempFileOutputStream, 1024*1024);
         OutputStreamWriter writerOutputStream = new OutputStreamWriter(bufferedOutputStream, "UTF-8");
         BatchConsumer batchConsumer = new BatchConsumer(schema, objectWriter, writerOutputStream);
         DataReader dataReader = new DataReader(data, batchConsumer);
@@ -55,18 +56,22 @@ public class CsvConverter {
 
     public static void main(String[] args) throws IOException {
 //        File csvDir = new File("data", "csv");
-        String path = "F:/reddit_data";
+        String inputPath = "F:/reddit_data";
         if(args.length > 0){
-            path = args[0];
+            inputPath = args[0];
         }
-        File csvDir = new File(path, "csv");
+        String outputPath = inputPath+"/csv";
+        if(args.length == 2){
+            outputPath = args[1];
+        }
+        File csvDir = new File(outputPath);
         if (!csvDir.exists()) {
             boolean mkResult = csvDir.mkdirs();
             if (!mkResult) {
                 throw new RuntimeException("Could not create " + csvDir + " directory for output.");
             }
         }
-        List<File> inputFiles = Main.gatherInputFiles(path);
+        List<File> inputFiles = Main.gatherInputFiles(inputPath);
 //        inputFiles.add(new File("data", "firstHundred.json"));
         CsvConverter csvConverter = new CsvConverter(csvDir, inputFiles);
         csvConverter.startConversion();

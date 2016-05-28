@@ -2,6 +2,9 @@ package com.dewarim.reddit;
 
 
 import com.google.gson.Gson;
+import org.apache.commons.compress.compressors.CompressorException;
+import org.apache.commons.compress.compressors.CompressorInputStream;
+import org.apache.commons.compress.compressors.CompressorStreamFactory;
 
 import java.io.*;
 
@@ -20,7 +23,10 @@ public class DataReader {
 
     public void parseFile() {
         try {
-            BufferedReader buffy = new BufferedReader(new FileReader(file));
+            FileInputStream fin = new FileInputStream(file);
+            BufferedInputStream bis = new BufferedInputStream(fin);
+            CompressorInputStream input = new CompressorStreamFactory().createCompressorInputStream(bis);
+            BufferedReader buffy = new BufferedReader(new InputStreamReader(input));
             Gson gson = new Gson();
 
             buffy.lines().forEach(line -> {
@@ -29,7 +35,7 @@ public class DataReader {
             });
 
 
-        } catch (IOException e) {
+        } catch (CompressorException|IOException e) {
             throw new RuntimeException("An error occurred while trying to read the JSON data: " + e.getMessage(), e);
         }
     }

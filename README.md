@@ -36,7 +36,18 @@ Currently you will have to write such queries in Java (see: Search class to get 
             doc.add(new StringField("url", Comment.createLink(comment.subreddit, comment.link_id, comment.id), Field.Store.YES));
    
    STORE.YES means the field is contained in the index and can be shown on a search result page.       
-   
+
+## Input/Output Format
+
+CsvConverter should be called with two parameters, input directory and output directory.
+It reads .bz2 and emits .csv.gz files at the moment.
+    
+    mvn clean package
+    # copy target/reddit-1.0-SNAPSHOT-distribution.zip to target machine
+    # unzip  unzip reddit-1.0-SNAPSHOT-distribution.zip 
+    # cd  reddit-1.0-SNAPSHOT-distribution 
+    java -cp reddit-1.0-SNAPSHOT.jar:lib/. com.dewarim.reddit.csv.CsvConverter /home/ingo/reddit_data /home/ingo/reddit_csv    
+
 ## License
 
 My code is free to use under the [Apache License](http://www.apache.org/licenses/LICENSE-2.0), version 2.
