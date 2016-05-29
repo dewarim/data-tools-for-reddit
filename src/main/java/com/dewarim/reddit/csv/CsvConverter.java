@@ -33,16 +33,19 @@ public class CsvConverter {
 
     }
 
-    public void startConversion() throws IOException {
+    public void startConversion( boolean skipExistingFiles) throws IOException {
         for (File inputFile : inputFiles) {
             System.out.println("\nConverting: " + inputFile);
-            totalConversion(inputFile);
+            totalConversion(inputFile,  skipExistingFiles);
         }
     }
 
-    private void totalConversion(File data) throws IOException {
+    private void totalConversion(File data, boolean skipExistingFiles) throws IOException {
         ObjectWriter objectWriter = csvMapper.writer(schema);
-        File csvOutput = new File(csvDir, data.getName() + ".csv.gz");
+        File csvOutput = new File(csvDir, data.getName().replace(".bz2",".csv.gz"));
+        if(skipExistingFiles && csvOutput.exists()){
+            return;
+        }
         FileOutputStream tempFileOutputStream = new FileOutputStream(csvOutput);
         GZIPOutputStream bufferedOutputStream = new GZIPOutputStream(tempFileOutputStream, 1024*1024);
         OutputStreamWriter writerOutputStream = new OutputStreamWriter(bufferedOutputStream, "UTF-8");
@@ -74,6 +77,6 @@ public class CsvConverter {
         List<File> inputFiles = Main.gatherInputFiles(inputPath);
 //        inputFiles.add(new File("data", "firstHundred.json"));
         CsvConverter csvConverter = new CsvConverter(csvDir, inputFiles);
-        csvConverter.startConversion();
+        csvConverter.startConversion(true);
     }
 }
