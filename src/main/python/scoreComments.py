@@ -32,6 +32,7 @@ selectCursor = db.cursor("reddit_cursor", cursor_factory=psycopg2.extras.DictCur
 selectCursor.execute(selectCommentQuery)
 commentCounter = 0
 
+sid = SentimentIntensityAnalyzer()
 for comment in selectCursor:
     id = comment[0]
     body = comment[1]
@@ -46,7 +47,6 @@ for comment in selectCursor:
     maxNegScore = 0
 
     # print("===")
-    sid = SentimentIntensityAnalyzer()
     commentLines = tokenize.sent_tokenize(body)
     for line in commentLines:
         ss = sid.polarity_scores(line)
