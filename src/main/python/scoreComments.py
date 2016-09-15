@@ -5,6 +5,9 @@ Based on: https://github.com/megansquire/masteringDM/blob/master/ch5/scoreLinusE
 
 Use nltkDownload.py first to download the required data files for sentiment analysis.
 
+Needs a python with some extras - you can use the community edition of Anaconda:
+https://www.continuum.io/downloads
+
 """
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk import tokenize
