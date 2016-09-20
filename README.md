@@ -1,5 +1,7 @@
 # Reddit-Data-Tools
 
+Note: this project is in no way an official or endorsed Reddit tool.
+
 Reddit user Stuck_In_The_Matrix has created a very large archive of public Reddit comments
  and put them up for downloading, see: [Thread on Reddit](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/)
   
@@ -59,4 +61,4 @@ The simplest thing that will work.
  
 ## Author
  
-Ingo Wiarda / ingo_wiarda@dewarim.de 
+Ingo Wiarda / ingo_wiarda@dewarim.de /u/Dewarim
