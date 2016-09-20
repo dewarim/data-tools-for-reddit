@@ -45,6 +45,7 @@ object UpvoteCountCsv {
       .format("com.databricks.spark.csv")
       .option("header", "false")
       .option("inferSchema", "false")
+      .option("treatEmptyValuesAsNulls", "true")
       .schema(schema)
       .load("data/RC_2007-10.csv.gz")
 
