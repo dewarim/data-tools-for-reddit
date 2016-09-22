@@ -16,6 +16,11 @@ Future plans are to create a simple web interface for complex queries
 must not contain more than one mention of (safe, picture, money) and can be from 2012 or 2013). 
 Currently you will have to write such queries in Java (see: Search class to get an idea of how to start).
 
+## Changes
+
+2016-09-19: Upgrade to Spark 2.0
+2016-09-22: Added sentiment analysis with Python and NLTK. For example results, see [code.dewarim.com](http://code.dewarim.com)
+
 ## Field order of CSV:
 
     @JsonPropertyOrder(value = {"author", "name", "body", "author_flair_text", "gilded", "score_hidden", "score", "link_id",
