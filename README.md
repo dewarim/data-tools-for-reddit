@@ -1,5 +1,7 @@
 # Reddit-Data-Tools
 
+Note: this project is in no way an official or endorsed Reddit tool.
+
 Reddit user Stuck_In_The_Matrix has created a very large archive of public Reddit comments
  and put them up for downloading, see: [Thread on Reddit](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/)
   
@@ -13,6 +15,11 @@ Future plans are to create a simple web interface for complex queries
 (for example: >2000 upvotes, must not be in /r/funny or /r/pics, must contain all of (op, surely, deliver), 
 must not contain more than one mention of (safe, picture, money) and can be from 2012 or 2013). 
 Currently you will have to write such queries in Java (see: Search class to get an idea of how to start).
+
+## Changes
+
+* 2016-09-19: Upgrade to Spark 2.0
+* 2016-09-22: Added sentiment analysis with Python and NLTK. For example results, see [code.dewarim.com](http://code.dewarim.com)
 
 ## Field order of CSV:
 
@@ -59,4 +66,4 @@ The simplest thing that will work.
  
 ## Author
  
-Ingo Wiarda / ingo_wiarda@dewarim.de 
+Ingo Wiarda / ingo_wiarda@dewarim.de /u/Dewarim

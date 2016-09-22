@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 
-Based on: https://github.com/megansquire/masteringDM/blob/master/ch5/scoreLinusEmail.py by megan
+Based on: https://github.com/megansquire/masteringDM/blob/master/ch5/scoreLinusEmail.py by Megan Squire
 
 Use nltkDownload.py first to download the required data files for sentiment analysis.
 
@@ -79,10 +79,12 @@ for comment in selectCursor:
 
     # update table with calculated fields
     try:
-        updateCursor.execute(updateScoreQuery, (roundedFinalScore, maxPosScore, maxNegScore, id))
+        if roundedFinalScore != 0 or maxPosScore !=0 or maxNegScore != 0:
+            updateCursor.execute(updateScoreQuery, (roundedFinalScore, maxPosScore, maxNegScore, id))
         commentCounter += 1
     except:
         updateDbConnection.rollback()
+        print("Failed to update cursor.")
     if commentCounter % 1000 == 0:
         updateDbConnection.commit()
         print(commentCounter)
