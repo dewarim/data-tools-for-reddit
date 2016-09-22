@@ -8,6 +8,9 @@ Use nltkDownload.py first to download the required data files for sentiment anal
 Needs a python with some extras - you can use the community edition of Anaconda:
 https://www.continuum.io/downloads
 
+To install postgres driver:
+anaconda3/bin/conda install -c anaconda psycopg2=2.6.2   
+
 """
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk import tokenize
