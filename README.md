@@ -18,8 +18,9 @@ Currently you will have to write such queries in Java (see: Search class to get 
 
 ## Changes
 
-* 2016-09-19: Upgrade to Spark 2.0
+* 2016-09-22: scoreCommentsJson.py: read comments in JSON format from bz2 files with Python.
 * 2016-09-22: Added sentiment analysis with Python and NLTK. For example results, see [code.dewarim.com](http://code.dewarim.com)
+* 2016-09-19: Upgrade to Spark 2.0
 
 ## Field order of CSV:
 
