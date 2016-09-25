@@ -18,10 +18,18 @@ from nltk import tokenize
 
 import bz2
 import json
+import sys
 
 sid = SentimentIntensityAnalyzer()
-bz_file = bz2.BZ2File("data/RC_2007-10.bz2", 'rb', 1000000)
-score_file = open("data/RC_2017-10.sentiment.tsv", 'w')
+archive = "data/RC_2007-10.bz2"
+if len(sys.argv) > 1:
+    archive = sys.argv[1]
+else:
+    print("No command line arguments given - trying to work with default example data file "+archive)
+    
+print("Working on file: " + archive)
+bz_file = bz2.BZ2File(archive, 'rb', 1000000)
+score_file = open(archive.replace("bz2", "sentiment"), 'w')
 
 commentCount = 0
 while True:
@@ -70,6 +78,6 @@ while True:
     commentCount += 1
     if commentCount % 1000 == 0:
         print(commentCount)
-    #break
+        # break
 bz_file.close()
 score_file.close()
