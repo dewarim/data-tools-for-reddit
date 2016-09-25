@@ -23,8 +23,10 @@ import sys
 sid = SentimentIntensityAnalyzer()
 archive = "data/RC_2007-10.bz2"
 if len(sys.argv) > 1:
+    # when started via "python scoreCommentsJson.py /data/location/reddit_comments.bz2, 
+    # the first element of sys.argv seems to be the script name, not the path, like in Java.
     archive = sys.argv[1]
-else:
+else:    
     print("No command line arguments given - trying to work with default example data file "+archive)
     
 print("Working on file: " + archive)

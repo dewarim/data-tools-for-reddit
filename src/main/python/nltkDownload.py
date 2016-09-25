@@ -7,3 +7,5 @@ nltk.download()
 # http://stackoverflow.com/questions/33183618/nltk-data-out-of-date-python-3-4
 
 # more info on nltk data package licenses: http://www.nltk.org/nltk_data/
+
+# for command line download, use ntlk.download('all')
