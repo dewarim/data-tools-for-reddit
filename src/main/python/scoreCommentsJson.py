@@ -19,6 +19,7 @@ from nltk import tokenize
 import bz2
 import json
 import sys
+import os.path
 
 sid = SentimentIntensityAnalyzer()
 archive = "data/RC_2007-10.bz2"
@@ -29,9 +30,15 @@ if len(sys.argv) > 1:
 else:    
     print("No command line arguments given - trying to work with default example data file "+archive)
     
+
 print("Working on file: " + archive)
+score_file_name = archive.replace("bz2", "sentiment")
+if os.path.exists(score_file_name):
+    print("sentiment file already exists")
+    sys.exit()
+
 bz_file = bz2.BZ2File(archive, 'rb', 1000000)
-score_file = open(archive.replace("bz2", "sentiment"), 'w')
+score_file = open(score_file_name, 'w')
 
 commentCount = 0
 while True:
