@@ -1,9 +1,8 @@
-package com.dewarim.reddit.spark
+package com.dewarim.reddit.spark.parquet
 
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkConf
-import org.apache.spark.sql.{SQLContext, SaveMode}
+import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.{SQLContext, SaveMode}
 
 /**
   * Convert .json.bz2 input to parquet columnar storage format. 

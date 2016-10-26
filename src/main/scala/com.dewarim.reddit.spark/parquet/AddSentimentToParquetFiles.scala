@@ -1,12 +1,10 @@
-package com.dewarim.reddit.spark
+package com.dewarim.reddit.spark.parquet
 
 import java.io.File
 
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkConf
-import org.apache.spark.sql.{SQLContext, SaveMode}
-import org.apache.spark.sql.functions._
+import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.types._
+import org.apache.spark.sql.{SQLContext, SaveMode}
 
 /**
   * Add sentiment data to comment data while converting to parquet. 

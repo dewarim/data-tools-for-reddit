@@ -1,9 +1,7 @@
-package com.dewarim.reddit.spark
+package com.dewarim.reddit.spark.parquet
 
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkConf
+import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql.types.{StructField, _}
 
 /**
   * Note: this shows the first 20 lines of a parquet-with-sentiment data set.

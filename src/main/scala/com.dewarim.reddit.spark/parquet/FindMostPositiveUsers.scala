@@ -1,7 +1,6 @@
-package com.dewarim.reddit.spark
+package com.dewarim.reddit.spark.parquet
 
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkConf
+import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SQLContext
 
 /**

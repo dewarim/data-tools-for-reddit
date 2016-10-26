@@ -1,4 +1,4 @@
-package com.dewarim.reddit.spark
+package com.dewarim.reddit.spark.parquet
 
 import org.apache.spark.sql.SparkSession
 
