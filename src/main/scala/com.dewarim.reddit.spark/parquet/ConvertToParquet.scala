@@ -17,7 +17,7 @@ object ConvertToParquet {
     // java.lang.ArrayIndexOutOfBoundsException: 18002
     // at org.apache.hadoop.io.compress.bzip2.CBZip2InputStream.recvDecodingTables(CBZip2InputStream.java:730)
     // when using local[4]
-    val sc = new SparkContext("local[4]", "Reddit Data Tools", conf)
+    val sc = new SparkContext("local[1]", "Reddit Data Tools", conf)
     sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive","true")
 
     val sqlContext = new SQLContext(sc)
