@@ -9,11 +9,11 @@
 
 #!/bin/bash
 
-for path in /home/ingo/downloads/reddit_data/20*; do
+for path in /home/ingo/reddit_data/20*; do
 
         for file in ${path}/*; do
                 echo $file
-                /home/ingo/bin/anaconda3/bin/python sentimentScoreJson.py $file
+                /home/ingo/bin/anaconda3/bin/python scoreCommentsJson.py $file
         done
 
 done
