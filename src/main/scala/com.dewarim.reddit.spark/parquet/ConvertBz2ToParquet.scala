@@ -7,7 +7,7 @@ import org.apache.spark.sql.{SQLContext, SaveMode}
 /**
   * Convert .json.bz2 input to parquet columnar storage format. 
   */
-object ConvertToParquet {
+object ConvertBz2ToParquet {
 
   def convert(inputPath:String): Unit = {
 
@@ -38,7 +38,7 @@ object ConvertToParquet {
     else{
       "data/RC_2007-10.bz2"
     }
-    ConvertToParquet.convert(inputPath)
+    ConvertBz2ToParquet.convert(inputPath)
   }
 }
 
