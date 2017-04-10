@@ -41,6 +41,7 @@ Python classes for (simple) sentiment analysis which can
 
 ## Changes
 
+* 2017-03-10: Code to extract separate date and time info.
 * 2016-10-22: FindMostPositiveUsers.scala: find the 100 most positive users using the sentiment files.
 * 2016-09-25: Add bash script to loop over all comment archives.
 * 2016-09-22: scoreCommentsJson.py: read comments in JSON format from bz2 files with Python.
