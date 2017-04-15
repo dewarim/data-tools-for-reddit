@@ -39,9 +39,43 @@ Python classes for (simple) sentiment analysis which can
 * add sentiment data to comments existing in a PostgreSQL db (a database filled by the Java code)
 * read original bz2 compressed JSON, and output sentiment data to CSV files        
 
+## List of torrents
+
+### Raw data
+
+Just the raw data files as downloaded from [PushShift.io](https://files.pushshift.io/reddit/comments).
+Please donate some bandwidth and keep them seeded for a time.
+
+* [2005](https://cinnamon.dewarim.com/torrents/reddit-2005.torrent) (just 2005-12, 116 KB)
+* [2006](https://cinnamon.dewarim.com/torrents/reddit-2006.torrent) (45 MB)
+* [2007](https://cinnamon.dewarim.com/torrents/reddit-2007.torrent) (212 MB)
+* [2008](https://cinnamon.dewarim.com/torrents/reddit-2008.torrent) (618 MB)
+* [2009](https://cinnamon.dewarim.com/torrents/reddit-2009.torrent) (1.72 GB)
+* [2010](https://cinnamon.dewarim.com/torrents/reddit-2010.torrent) (4.4 GB)
+* [2011](https://cinnamon.dewarim.com/torrents/reddit-2011.torrent) (11 GB)
+* [2012](https://cinnamon.dewarim.com/torrents/reddit-2012.torrent) (24 GB)
+* [2013](https://cinnamon.dewarim.com/torrents/reddit-2013.torrent) (38 GB)
+* [2014](https://cinnamon.dewarim.com/torrents/reddit-2014.torrent) (53 GB)
+* [2015](https://cinnamon.dewarim.com/torrents/reddit-2015.torrent) (68 GB)
+* [2016](https://cinnamon.dewarim.com/torrents/reddit-2016.torrent) (81 GB)
+* [2017](https://cinnamon.dewarim.com/torrents/reddit-2017.torrent) (up to 2017-03, 23 GB)
+
+### Data in Parquet format
+
+// TODO (conversion finished, have to clean up dataset somewhat to rarely needed columns)
+
+### Time and date
+
+// TODO (finished, just have to build the torrents and decide on server)
+
+### Sentiment data
+
+// TODO (finished, just have to build the torrents and decide on server)
+
 ## Changes
 
-* 2017-03-10: Code to extract separate date and time info.
+* 2017-04-15: Add torrents
+* 2017-04-10: Code to extract separate date and time info.
 * 2016-10-22: FindMostPositiveUsers.scala: find the 100 most positive users using the sentiment files.
 * 2016-09-25: Add bash script to loop over all comment archives.
 * 2016-09-22: scoreCommentsJson.py: read comments in JSON format from bz2 files with Python.
