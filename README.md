@@ -109,6 +109,11 @@ Please donate some bandwidth and keep them seeded for a time.
  
 See: [release.md](release.md)
 
+## Example of working with sentiment data
+
+One older example: redditors and what they expess about car brands @ 
+[code.dewarim.com](https://code.dewarim.com/index.html)
+
 ## License
 
 My code is free to use under the [Apache License](http://www.apache.org/licenses/LICENSE-2.0), version 2.
