@@ -105,16 +105,9 @@ Please donate some bandwidth and keep them seeded for a time.
    
    STORE.YES means the field is contained in the index and can be shown on a search result page.       
 
-## Input/Output Format
-
-CsvConverter should be called with two parameters, input directory and output directory.
-It reads .bz2 and emits .csv.gz files at the moment.
-    
-    mvn clean package
-    # copy target/reddit-1.0-SNAPSHOT-distribution.zip to target machine
-    # unzip  unzip reddit-1.0-SNAPSHOT-distribution.zip 
-    # cd  reddit-1.0-SNAPSHOT-distribution 
-    java -cp reddit-1.0-SNAPSHOT.jar:lib/. com.dewarim.reddit.csv.CsvConverter /home/ingo/reddit_data /home/ingo/reddit_csv    
+## Converting data
+ 
+See: [release.md](release.md)
 
 ## License
 
