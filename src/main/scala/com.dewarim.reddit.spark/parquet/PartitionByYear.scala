@@ -7,6 +7,9 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
   * Note: this will take a long time and TBytes of disk space. Have not run it successfully yet due to out-of-space
   * problems. But if you need the data pre-partitioned, you can download and convert the raw data as it's already
   * one torrent per year.
+  * 
+  * You can run this with in the reddit-1.0-SNAPSHOT directory with:   
+  * java -cp reddit-1.0-SNAPSHOT.jar:lib/. com.dewarim.reddit.spark.parquet.PartitionByYear /home/ingo/reddit-parquet /home/ingo/time-data /data/reddit-by-year
   */
 object PartitionByYear {
 
