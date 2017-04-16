@@ -66,11 +66,11 @@ Please donate some bandwidth and keep them seeded for a time.
 
 ### Time and date
 
-// TODO (finished, just have to build the torrents and decide on server)
+// TODO ~~(finished, just have to build the torrents and decide on server)~~ running
 
 ### Sentiment data
 
-// TODO (finished, just have to build the torrents and decide on server)
+// TODO ~~(finished, just have to build the torrents and decide on server)~~ running
 
 ## Changes
 
