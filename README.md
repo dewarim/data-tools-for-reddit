@@ -46,6 +46,8 @@ Python classes for (simple) sentiment analysis which can
 Just the raw data files as downloaded from [PushShift.io](https://files.pushshift.io/reddit/comments).
 Please donate some bandwidth and keep them seeded for a time.
 
+#### Comments
+
 * [2005](https://cinnamon.dewarim.com/torrents/reddit-2005.torrent) (just 2005-12, 116 KB)
 * [2006](https://cinnamon.dewarim.com/torrents/reddit-2006.torrent) (45 MB)
 * [2007](https://cinnamon.dewarim.com/torrents/reddit-2007.torrent) (212 MB)
@@ -59,6 +61,22 @@ Please donate some bandwidth and keep them seeded for a time.
 * [2015](https://cinnamon.dewarim.com/torrents/reddit-2015.torrent) (68 GB)
 * [2016](https://cinnamon.dewarim.com/torrents/reddit-2016.torrent) (81 GB)
 * [2017](https://cinnamon.dewarim.com/torrents/reddit-2017.torrent) (up to 2017-03, 23 GB)
+
+The complete set is currently also available at [academictorrents.com](http://academictorrents.com/details/85a5bd50e4c365f8df70240ffd4ecc7dec59912b)
+
+#### Submissions
+
+* 2006-2007 is not complete yet.
+* [2008](https://cinnamon.dewarim.com/torrents/reddit-submission-2008.torrent)
+* [2009](https://cinnamon.dewarim.com/torrents/reddit-submission-2009.torrent)
+* [2010](https://cinnamon.dewarim.com/torrents/reddit-submission-2010.torrent)
+* [2011](https://cinnamon.dewarim.com/torrents/reddit-submission-2011.torrent)
+* [2012](https://cinnamon.dewarim.com/torrents/reddit-submission-2012.torrent)
+* [2013](https://cinnamon.dewarim.com/torrents/reddit-submission-2013.torrent)
+* [2014](https://cinnamon.dewarim.com/torrents/reddit-submission-2014.torrent)
+* [2015](https://cinnamon.dewarim.com/torrents/reddit-submission-2015.torrent)
+* [2016](https://cinnamon.dewarim.com/torrents/reddit-submission-2016.torrent)
+* [2017](https://cinnamon.dewarim.com/torrents/reddit-submission-2017.torrent) (up to 2017-03)
 
 ### Data in Parquet format
 
