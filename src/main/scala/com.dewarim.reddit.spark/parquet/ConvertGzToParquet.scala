@@ -34,7 +34,7 @@ object ConvertGzToParquet {
     df2.write.mode(SaveMode.Overwrite).parquet(outputPath)
 
     // testing new data:
-    sqlContext.read.parquet(outputPath).select("id", "created_utc", "gilded", "score", "ups", "subreddit").show()
+    sqlContext.read.parquet(outputPath).select("id", "created_utc", "gilded", "score", "subreddit").show()
     sqlContext.read.parquet(outputPath).orderBy("created_utc") show()
 
     sc.stop()
