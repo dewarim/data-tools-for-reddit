@@ -29,7 +29,7 @@ object ConvertGzToParquet {
       .withColumn("created_utc2", df.col("created_utc").cast(LongType)).drop("created_utc").withColumnRenamed("created_utc2", "created_utc")
       .withColumn("gilded2", df.col("gilded").cast(IntegerType)).drop("gilded").withColumnRenamed("gilded2", "gilded")
       .withColumn("score2", df.col("score").cast(IntegerType)).drop("score").withColumnRenamed("score2", "score")
-      .withColumn("ups2", df.col("ups").cast(IntegerType)).drop("ups").withColumnRenamed("ups2", "ups")
+//      .withColumn("ups2", df.col("ups").cast(IntegerType)).drop("ups").withColumnRenamed("ups2", "ups") // looks like 'ups' is not included any longer in source dataset
     df2.show()  
     df2.write.mode(SaveMode.Overwrite).parquet(outputPath)
 
