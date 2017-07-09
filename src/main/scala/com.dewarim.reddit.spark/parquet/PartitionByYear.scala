@@ -21,18 +21,18 @@ object PartitionByYear {
       .getOrCreate()
 
     val df = spark.read.parquet(commentData)
+    df.createTempView("everything")
     val timeDf = spark.read.parquet(timeData)
-    val combinedDf = df.join(timeDf, "id")
-    Range(2005, 2017).foreach(generatePartitionedData(_, combinedDf, outputPath))
+    timeDf.createTempView("all_times")
+    Range(2007, 2017).foreach(generatePartitionedData(_, outputPath, spark))
 
     spark.stop()
   }
 
-  def generatePartitionedData(year: Int, df: DataFrame, outputPath: String): Unit = {
+  def generatePartitionedData(year: Int, outputPath: String, spark: SparkSession): Unit = {
     val yearStr: String = year.toString
-    df.filter(row => row.getAs("year").equals(yearStr))
-      .drop("year","month","day","hour") // no need to keep the timeData, you can always join it anew
-      .repartition(12) // so we have roughly month-sized data chunks of < 10GByte. Note: one file != comments of one month 
+    spark.sql(s"select e.* from everything e join all_times a using(id) where a.year=$yearStr")
+//      .drop("year","month","day","hour") // no need to keep the timeData, you can always join it anew
       .write.mode(SaveMode.Overwrite).parquet(outputPath + "/" + yearStr)
   }
 
