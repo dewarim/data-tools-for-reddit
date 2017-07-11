@@ -100,6 +100,7 @@ Data was created by using the Vader dataset from [NLTK.org](http://www.nltk.org/
 
 ## Changes
 
+* 2017-07-11: Add sentiment data download link
 * 2017-04-15: Add torrents
 * 2017-04-10: Code to extract separate date and time info.
 * 2016-10-22: FindMostPositiveUsers.scala: find the 100 most positive users using the sentiment files.
