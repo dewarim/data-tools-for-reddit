@@ -95,6 +95,9 @@ one entry per line consisting of (roundedFinalScore, maxPosScore, maxNegScore, r
 
 Data was created by using the Vader dataset from [NLTK.org](http://www.nltk.org/data.html).
 
+    md5sum: c0964e3524555f2493a5bc29ec4c643e
+    sha256sum: 13f157e607bbb9b10523bf36d35527ea1953cbd027fabc88c7344a45bd3450f1
+
 ## Changes
 
 * 2017-04-15: Add torrents
