@@ -48,6 +48,8 @@ Please donate some bandwidth and keep them seeded for a time.
 
 #### Comments
 
+Note: My torrent server is currently offline, as I have to re-evaluate copyright and upcomming changes in EU data protection laws.
+
 * [2005](https://cinnamon.dewarim.com/torrents/reddit-2005.torrent) (just 2005-12, 116 KB)
 * [2006](https://cinnamon.dewarim.com/torrents/reddit-2006.torrent) (45 MB)
 * [2007](https://cinnamon.dewarim.com/torrents/reddit-2007.torrent) (212 MB)
