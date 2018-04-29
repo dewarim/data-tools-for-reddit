@@ -16,7 +16,7 @@ Currently you will have to write such queries in Java (see: Search class to get 
 
 To index one month (or more...) of reddit comments and do a simple query. 
 
-### From aource
+### From source
 
 * Clone or download the repository to your system.
 * Download one reddit comment archive from [PushShift.io](https://files.pushshift.io/reddit/comments) (or the torrent from somewhere else.)
