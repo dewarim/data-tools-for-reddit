@@ -50,7 +50,7 @@ public class LuceneCommentConsumer implements CommentConsumer{
             throw new RuntimeException(e);
         }
         counter++;
-        if(counter % 1_000_000 == 0){
+        if(counter % 100_000 == 0){
             System.out.print(".");
         }
     }

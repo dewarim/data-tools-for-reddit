@@ -1,4 +1,4 @@
-# Reddit-Data-Tools
+# dewarim's Reddit-Data-Tools
 
 Note: this project is in no way an official or endorsed Reddit tool.
 
@@ -12,7 +12,32 @@ Future plans are to create a simple web interface for complex queries
 must not contain more than one mention of (safe, picture, money) and can be from 2012 or 2013). 
 Currently you will have to write such queries in Java (see: Search class to get an idea of how to start).
 
-## What's inside
+## Quickstart
+
+To index one month (or more...) of reddit comments and do a simple query. 
+
+### From aource
+
+* Clone or download the repository to your system.
+* Download one reddit comment archive from [PushShift.io](https://files.pushshift.io/reddit/comments) (or the torrent from somewhere else.)
+* You need Java 8 and Apache Maven 3 installed.
+* run 'mvn clean package' to generate the archive in the 'target' folder.
+* continue with 'from archive' step
+
+### From archive 
+
+* Download the distribution from [cinnamon.dewarim.com](https://cinnamon.dewarim.com/reddit-1.0-SNAPSHOT-distribution.zip).
+* Unzip reddit-1.0-SNAPSHOT-distribution.zip to a folder of your choice.
+* Open a command line in 'reddit-1.0-SNAPSHOT' folder.
+* to create a Lucene index, where the data folder contains "2007/RC_2007-01.bz2"
+
+     java -cp lib/.:reddit-1.0-SNAPSHOT.jar com.dewarim.reddit.Main --baseDir ./data --luceneDir ./data
+   
+* to search the index: 
+
+     java -cp lib/.:reddit-1.0-SNAPSHOT.jar com.dewarim.reddit.Search --luceneDir ./data/index-all -q reddit -q gold
+
+## What's inside this repository
 
 ### Java
  
@@ -22,7 +47,7 @@ Java classes to
 * create a Lucene index (skipping deleted comments, needs 24 hours single-threaded)
 * add the comments to a Postgresql database (useful if you want to play with a month's worth of data)
 * convert the JSON data into CSV (cuts required size in half and is easier to digest for many programs, 
-  but may cause problems with line breaks in comments)
+  but still has problems with line breaks in comments - wip)
 
 ### Scala
   
@@ -102,6 +127,9 @@ Data was created by using the Vader dataset from [NLTK.org](http://www.nltk.org/
 
 ## Changes
 
+* 2018-04-29: Add command line parser by Cédric Beust (see: http://jcommander.org/)
+              Refactored indexer and search for better command line experience.
+              Add quick start section above.
 * 2017-07-11: Add sentiment data download link
 * 2017-04-15: Add torrents
 * 2017-04-10: Code to extract separate date and time info.

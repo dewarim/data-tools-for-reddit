@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
-            <version>1.11</version>
+            <version>1.16.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -77,6 +77,13 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4.1210.jre7</version>
+        </dependency>
+
+        <!-- command line parsing -->
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.72</version>
         </dependency>
     </dependencies>
 
