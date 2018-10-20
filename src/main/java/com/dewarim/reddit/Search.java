@@ -2,7 +2,10 @@ package com.dewarim.reddit;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import org.apache.lucene.document.LongPoint;
+import org.apache.lucene.document.LongRange;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.queryparser.xml.builders.RangeQueryBuilder;
 import org.apache.lucene.search.*;
 
 import java.io.File;
@@ -35,12 +38,12 @@ public class Search {
         System.out.println("Going to search over " + searcher.countDocuments() + " documents.");
 
         long start = System.currentTimeMillis();
-        BooleanQuery query = new BooleanQuery();
+        BooleanQuery.Builder queryBuilder = new BooleanQuery.Builder();
         cliArguments.queryStrings.forEach(
-                q -> query.add(new TermQuery(new Term("body", q)), BooleanClause.Occur.MUST)
+                q -> queryBuilder.add(new TermQuery(new Term("body", q)), BooleanClause.Occur.MUST)
         );
-        query.add(NumericRangeQuery.newIntRange("ups", 4, cliArguments.minUps, cliArguments.maxUps, true, true), BooleanClause.Occur.MUST);
-        searcher.search(query);
+        queryBuilder.add(LongPoint.newRangeQuery("ups", cliArguments.minUps, cliArguments.maxUps), BooleanClause.Occur.MUST);
+        searcher.search(queryBuilder.build());
         System.out.println("Search took " + (System.currentTimeMillis() - start) + " ms");
     }
 
