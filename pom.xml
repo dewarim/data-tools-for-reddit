@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     
     <properties>
-        <spark.version>2.2.0</spark.version>
+        <spark.version>2.2.2</spark.version>
         <lucene.version>7.5.0</lucene.version>
     </properties>
     
