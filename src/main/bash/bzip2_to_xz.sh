@@ -33,7 +33,7 @@ for file in ${SOURCE_PATH}/*.zst; do
   fi
 
   echo "convert file: ${file} to ${TARGET_PATH}/${xz_name}"
-  zstcat $file | xz -9 -T 0 > ${xz_name}
+  zstdcat $file | xz -9 -T 0 > ${xz_name}
 done
 
 # copy existing xz
