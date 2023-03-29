@@ -39,7 +39,7 @@ object CountStuff {
 
   def countPart(spark: SparkSession, charCount: LongAccumulator, inputPath: String): Unit = {
     val df = spark.read.parquet(inputPath)
-    df.select("body")
+    df.select("body").rdd
       .foreachPartition(itera => {
         itera.foreach { row =>
           charCount.add(row.getAs("body").toString.length)

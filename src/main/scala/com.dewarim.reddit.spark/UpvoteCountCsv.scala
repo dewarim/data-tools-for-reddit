@@ -3,19 +3,18 @@ package com.dewarim.reddit.spark
 
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SQLContext
+import org.apache.spark.sql.{SparkSession}
 import org.apache.spark.sql.types._
 
 /**
-  * Note: will fail on standard set because of newlines in CSV records.
-  */
+ */
 object UpvoteCountCsv {
 
   def count(): Unit = {
 
     val conf = new SparkConf()
-    val sc = new SparkContext("local[4]", "Reddit Data Tools", conf)
-    val sqlContext = new SQLContext(sc)
+    val sc: SparkContext = new SparkContext("local[4]", "Reddit Data Tools", conf)
+    val sqlContext = SparkSession.builder().config(conf).getOrCreate()
 
     val schema = new StructType(Array(
       StructField("author", StringType, true),
@@ -42,12 +41,15 @@ object UpvoteCountCsv {
     ))
 
     val df = sqlContext.read
-      .format("com.databricks.spark.csv")
+      .format("json")
       .option("header", "false")
       .option("inferSchema", "false")
       .option("treatEmptyValuesAsNulls", "true")
       .schema(schema)
-      .load("data/RC_2007-10.csv.gz")
+      // not working due to missing native zstd lib in hadoop dependency:
+      // .load("data/*.zst")
+      // expects: files with one-json-object-per-row
+      .load("data/*.json")
 
     df.show()
 
