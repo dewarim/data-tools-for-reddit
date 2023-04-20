@@ -1,13 +1,21 @@
 package com.dewarim.reddit.tools.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import org.hibernate.annotations.CollectionId;
 
+@Entity
 public class Submission {
 
+    @Id
     private String id;
+    @Column(length = 1024)
     private String url;
     private String subreddit;
     private String title;
+    @Column(length = 1024)
     private String permalink;
     @JsonProperty("over_18")
     private boolean over18;

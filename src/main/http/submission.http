@@ -2,3 +2,6 @@ GET localhost:8081/submission/listFromFile?sfwOnly=true
 
 ###
 GET localhost:8081/submission/hello
+
+###
+POST localhost:8081/submission/importFromFile

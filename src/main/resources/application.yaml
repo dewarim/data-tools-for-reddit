@@ -1,10 +1,12 @@
 spring:
   jpa:
     database-platform: org.hibernate.community.dialect.SQLiteDialect
-    show-sql: true
+    show-sql: false
+    hibernate:
+      ddl-auto: update
   datasource:
     driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite:data/rs.db?cache=shared
+    url: jdbc:sqlite:data/rs.db
     username: sa
     password: sa
 management:
@@ -13,9 +15,10 @@ management:
       exposure:
         include: 'health,info,mappings'
 
-springdoc:
-  api-docs:
-    path: /api-docs
+# not ready for Spring Boot 3:
+#springdoc:
+#  api-docs:
+#    path: /api-docs
 
 server:
   port: 8081
