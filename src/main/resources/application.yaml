@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    show-sql: true
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:data/rs.db?cache=shared
+    username: sa
+    password: sa
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health,info,mappings'
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+server:
+  port: 8081
+
+logging:
+  level:
+    root: info
+
+
