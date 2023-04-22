@@ -1,7 +1,6 @@
 GET localhost:8081/submission/listFromFile?sfwOnly=true
 
 ###
-GET localhost:8081/submission/hello
-
+POST localhost:8081/submission/importFromFiles
 ###
-POST localhost:8081/submission/importFromFile
+POST localhost:8081/submission/filterSubmissions

@@ -5,22 +5,27 @@ import java.util.Map;
 
 public class ImportStatistics {
 
-    private long             submissions;
-    private long             nsfw;
-    private long duration;
-    private Map<String,Long> subreddits = new HashMap<>();
+    private long              submissions;
+    private long              nsfw;
+    private long              duration;
+    private long              deleted;
+    private Map<String, Long> subreddits = new HashMap<>();
 
-    public void incSubmissionCount(){
-        submissions = submissions+1;
+    public void incSubmissionCount() {
+        submissions = submissions + 1;
     }
 
-    public void incNsfwCount(){
-        nsfw=nsfw+1;
+    public void incNsfwCount() {
+        nsfw = nsfw + 1;
     }
 
-    public void incSubredditCount(String subreddit){
+    public void incDeleted() {
+        deleted = deleted + 1;
+    }
+
+    public void incSubredditCount(String subreddit) {
         Long current = subreddits.getOrDefault(subreddit, 0L);
-        subreddits.put(subreddit, current+1);
+        subreddits.put(subreddit, current + 1);
     }
 
     public Long getSubmissions() {
@@ -47,17 +52,38 @@ public class ImportStatistics {
         this.subreddits = subreddits;
     }
 
+    public void setSubmissions(long submissions) {
+        this.submissions = submissions;
+    }
+
+    public void setNsfw(long nsfw) {
+        this.nsfw = nsfw;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public long getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(long deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "ImportStatistics{" +
                 "submissions=" + submissions +
                 ", nsfw=" + nsfw +
-                ", subreddits=" + subreddits +
                 ", duration=" + duration +
+                ", deleted=" + deleted +
+                ", subreddits=" + subreddits +
                 '}';
     }
 
     public void setDuration(long duration) {
-        this.duration=duration;
+        this.duration = duration;
     }
 }

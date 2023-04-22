@@ -4,6 +4,13 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 10000
+        connection:
+          autocommit: true
+
   datasource:
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:data/rs.db
@@ -26,5 +33,8 @@ server:
 logging:
   level:
     root: info
-
+    org:
+      hibernate: warn
+    com:
+     dewarim: debug
 

@@ -19,7 +19,16 @@ public class Submission {
     private String permalink;
     @JsonProperty("over_18")
     private boolean over18;
+    private boolean deleted;
     private int score;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public String getId() {
         return id;
@@ -86,6 +95,7 @@ public class Submission {
                 ", permalink='" + permalink + '\'' +
                 ", over18=" + over18 +
                 ", score=" + score +
+                ", deleted=" + deleted +
                 '}';
     }
 }
