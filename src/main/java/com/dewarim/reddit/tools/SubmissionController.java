@@ -42,8 +42,8 @@ import static java.util.function.Predicate.not;
 @RequestMapping("submission")
 public class SubmissionController {
 
-    private final        String       filename     = "/home/ingo/data2/reddit-submissions/RS_2013-11.zst";
-    private final        String       path         = "/home/ingo/data2/reddit-submissions";
+    private final        String       filename     = "data/RS_2008-02.zst";
+    private final        String       path         = "/media/reddit/reddit-submissions/";
     private final        ObjectMapper objectMapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     private static final Logger       log          = LoggerFactory.getLogger(SubmissionController.class);
 
@@ -123,8 +123,7 @@ public class SubmissionController {
                                 }
 //                    log.info("url: " + submission.getUrl());
                             });
-                    saveSubmissions(buffer);
-
+                    submissionRepository.saveAll(buffer);
                 } catch (IOException e) {
                     log.error("failed to list file: ", e);
                     throw new RuntimeException(e);
@@ -189,12 +188,6 @@ public class SubmissionController {
         statistics.setDuration(end - start);
         log.info(statistics.toString());
         return statistics;
-    }
-
-
-    @Transactional
-    public void saveSubmissions(List<Submission> buffer) {
-        submissionRepository.saveAll(buffer);
     }
 
     private Submission parseSubmission(String json) {

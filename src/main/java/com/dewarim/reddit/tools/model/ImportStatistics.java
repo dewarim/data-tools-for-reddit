@@ -10,6 +10,7 @@ public class ImportStatistics {
     private long              duration;
     private long              deleted;
     private Map<String, Long> subreddits = new HashMap<>();
+    private long              comments;
 
     public void incSubmissionCount() {
         submissions = submissions + 1;
@@ -27,6 +28,8 @@ public class ImportStatistics {
         Long current = subreddits.getOrDefault(subreddit, 0L);
         subreddits.put(subreddit, current + 1);
     }
+
+    public void incCommentCount() {comments=comments + 1;}
 
     public Long getSubmissions() {
         return submissions;
@@ -80,10 +83,19 @@ public class ImportStatistics {
                 ", duration=" + duration +
                 ", deleted=" + deleted +
                 ", subreddits=" + subreddits +
+                ", comments=" + comments +
                 '}';
     }
 
     public void setDuration(long duration) {
         this.duration = duration;
+    }
+
+    public long getComments() {
+        return comments;
+    }
+
+    public void setComments(long comments) {
+        this.comments = comments;
     }
 }
