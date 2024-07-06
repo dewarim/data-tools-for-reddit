@@ -2,15 +2,19 @@
 
 Note: this project is in no way an official or endorsed Reddit tool.
 
-Note 2: I am "currently" refactoring the project - it has been a couple of years and the Scala/Spark stuff no longer works as expected.
 
-The new code is in src, the old code is in old.
+<em>What you can currently do: read zst compressed reddit comments & submissions and put them into PostgreSQL</em>  
+
+(old code was using Spark & Lucene; the new code is in src, the old code is in old.
+)
+
+Due to reddit's license changes, pushshift.io no longer hosts the reddit data for public download, but they have [put them onto Academic Torrents](https://www.reddit.com/r/pushshift/comments/146r0dx/historical_data_torrents_all_in_one_place/), so you can download them [via torrent](https://academictorrents.com/details/7c0645c94321311bb05bd879ddee4d0eba08aaee).
 
 ## History
 
 Reddit user Stuck_In_The_Matrix has created a very large archive of public Reddit comments
  and put them up for downloading, see: [Thread on Reddit](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/)
-  
+ 
 This repository contains some tools to handle the over 1500 GByte of JSON data (compressed ... uncompressed it's much, much more).
 
 Future plans are to create a simple web interface for complex queries 
@@ -30,9 +34,11 @@ To index one month (or more...) of reddit comments and do a simple query.
 * run 'mvn clean package' to generate the archive in the 'target' folder.
 * continue with 'from archive' step
 
-### From archive 
+### From archive
 
-* Download the distribution from [cinnamon.dewarim.com](https://cinnamon.dewarim.com/reddit-1.0-SNAPSHOT-distribution.zip).
+(note: this no longer works)
+
+* Download the distribution from $brokenLink.
 * Unzip reddit-1.0-SNAPSHOT-distribution.zip to a folder of your choice.
 * Open a command line in 'reddit-1.0-SNAPSHOT' folder.
 * to create a Lucene index, where the data folder contains "2007/RC_2007-01.bz2"
